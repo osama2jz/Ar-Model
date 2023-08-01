@@ -1,0 +1,19 @@
+* {
+  /* background-color: black; */
+  /* color: black; */
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  height: 300px;
+  align-items: center;
+  border: 2px solid rgb(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.card:hover {
+  border: 2px solid teal;
+}
