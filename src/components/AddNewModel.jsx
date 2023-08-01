@@ -47,9 +47,15 @@ const AddNewModel = ({ opened, close, getData }) => {
     <Modal
       opened={opened}
       onClose={(e) => {
+        form.reset();
+        setUploading(false);
         close();
       }}
-      styles={{ title: { marginLeft: "auto", fontWeight: "bold" } }}
+      xOffset={0}
+      styles={{
+        root: { width: "85% !important" },
+        title: { marginLeft: "auto", fontWeight: "bold" },
+      }}
       title="Add 3d Model"
     >
       <form onSubmit={form.onSubmit((values) => handleAddModel(values))}>

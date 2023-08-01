@@ -23,7 +23,7 @@ const AllModels = () => {
 
   return (
     <div>
-      <Group position="right">
+      <Group position="right" mb="md">
         <Button onClick={() => navigate("/signin")}>Sign In</Button>
       </Group>
       <h1>View All Models</h1>

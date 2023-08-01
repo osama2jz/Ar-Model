@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import img1 from "../assets/react.svg";
 import { Button, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useState } from "react";
 const ModalCard = ({ data }) => {
   const [opened, { open, close }] = useDisclosure(false);
   // const [color, setColor] = useState(null);
@@ -32,8 +31,6 @@ const ModalCard = ({ data }) => {
 
   const handleColorChange = (color) => {
     let modelViewerColor = document?.querySelector("#color");
-    // modelViewerColor.addEventListener("model-visibility", () => {
-    console.log("i am rendering");
     const [material] = modelViewerColor?.model?.materials;
     material.pbrMetallicRoughness.setBaseColorFactor(color);
     // });

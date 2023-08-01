@@ -32,7 +32,7 @@ const Admin = () => {
   };
   return (
     <div>
-       <Group position="right">
+       <Group position="right" mb="md">
         <Button onClick={() => navigate("/")}>Sign Out</Button>
       </Group>
       <Button
