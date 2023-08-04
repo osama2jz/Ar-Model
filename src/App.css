@@ -4,4 +4,13 @@
   padding: 2rem;
   text-align: center;
 }
-
+model-viewer{
+  height: 400px;
+  width: 100%;
+  margin: auto;
+}
+@media screen and (max-width: 800px) {
+  model-viewer{
+    height: 300px;
+  }
+}

@@ -6,6 +6,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -23,8 +24,12 @@ const Signin = () => {
     },
   });
   const handleSignin = (values) => {
-    console.log(values);
-    navigate("/admin");
+    axios
+      .post("https://arguru.onrender.com/user", values)
+      .then((res) => {
+        if (res?.status === 200) navigate("/admin");
+      })
+      .catch((res) => alert("Wrong Credentials"));
   };
   return (
     <Container
@@ -48,8 +53,14 @@ const Signin = () => {
         }}
       >
         <Title>Sign In</Title>
-        <TextInput placeholder="email@example.com" {...form.getInputProps('email')}/>
-        <PasswordInput placeholder="******" {...form.getInputProps('password')}/>
+        <TextInput
+          placeholder="email@example.com"
+          {...form.getInputProps("email")}
+        />
+        <PasswordInput
+          placeholder="******"
+          {...form.getInputProps("password")}
+        />
         <Button type="submit">Sign In</Button>
       </form>
     </Container>

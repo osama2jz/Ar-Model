@@ -35,7 +35,7 @@ const ModalCard = ({ data }) => {
     material.pbrMetallicRoughness.setBaseColorFactor(color);
     // });
   };
-  
+
   return (
     <div className="card" onClick={open}>
       <img src={data?.image} width={"200px"} height={"80%"} />
@@ -43,7 +43,8 @@ const ModalCard = ({ data }) => {
       <Modal
         opened={opened}
         centered
-        size={"auto"}
+        size={"700px"}
+        // size={"auto"}
         onClose={(e) => {
           e.stopPropagation();
           close();
@@ -62,7 +63,7 @@ const ModalCard = ({ data }) => {
           camera-controls
           touch-action="pan-y"
         ></model-viewer>
-        <Group position="center">
+        <Group position="center" mt="sm">
           <Button color="green" onClick={() => handleColorChange("#37b24d")}>
             Green
           </Button>
