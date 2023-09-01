@@ -46,7 +46,7 @@ const AllModels = () => {
                   src={wa}
                   onClick={() =>
                     window.open(
-                      `https://api.whatsapp.com/send?phone=+923007171197&text=Hi this is a sample text for ${obj?.title}`
+                      `https://api.whatsapp.com/send/?phone=529841191943&text&type=phone_number&app_absent=0`
                     )
                   }
                   style={{
