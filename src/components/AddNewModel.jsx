@@ -1,10 +1,12 @@
 import {
   Button,
+  Checkbox,
   FileInput,
   Group,
   Modal,
   Stack,
   TextInput,
+  Textarea,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import axios from "axios";
@@ -21,6 +23,10 @@ const AddNewModel = ({ opened, close, getData }) => {
       title: "",
       image: image,
       model: null,
+      showColors: false,
+      price: null,
+      dimensions: "",
+      description: "",
     },
 
     validate: {
@@ -68,7 +74,7 @@ const AddNewModel = ({ opened, close, getData }) => {
           <FileInput
             label="Cover Image"
             accept="image/png, image/jpeg"
-            placeholder="Import Cover image"
+            placeholder="Import Cover image (200px x 250px)"
             onChange={(e) =>
               uploadSingleFile({
                 file: e,
@@ -81,7 +87,7 @@ const AddNewModel = ({ opened, close, getData }) => {
           <FileInput
             label="Model File"
             accept=".glb"
-            placeholder="Import 3d Model"
+            placeholder="Select AR Model"
             onChange={(e) =>
               uploadSingleFile({
                 file: e,
@@ -90,6 +96,26 @@ const AddNewModel = ({ opened, close, getData }) => {
                 setProgress: setUploading,
               })
             }
+          />
+          <TextInput
+            label="Price"
+            placeholder="Price"
+            type="number"
+            {...form.getInputProps("price")}
+          />
+          <TextInput
+            label="Dimensions"
+            placeholder="00 x 00 x 00"
+            {...form.getInputProps("dimensions")}
+          />
+          <Textarea
+            label="Description"
+            placeholder="Details about model"
+            {...form.getInputProps("description")}
+          />
+          <Checkbox
+            label="Show Colors Options"
+            {...form.getInputProps("showColors")}
           />
           <Group position="right">
             <Button

@@ -1,9 +1,10 @@
-import { Button, Group, Loader, Stack } from "@mantine/core";
+import { ActionIcon, Button, Group, Image, Loader, Stack } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import wa from "./assets/wa.svg";
 import add from "./assets/add.svg";
 import delet from "./assets/delete.svg";
 import ModalCard from "./components/ModalCard";
+import logo from "../public/logo.jpg";
 import { useDisclosure } from "@mantine/hooks";
 import AddNewModel from "./components/AddNewModel";
 import axios from "axios";
@@ -14,6 +15,11 @@ const Admin = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (!token) navigate("/");
+  });
   useEffect(() => {
     getData();
   }, []);
@@ -32,8 +38,16 @@ const Admin = () => {
   };
   return (
     <div>
-       <Group position="right" mb="md">
-        <Button onClick={() => navigate("/")}>Sign Out</Button>
+      <Group position="apart" mb="md">
+        <Image src={logo} width={80} />
+        <Button
+          onClick={() => {
+            localStorage.clear();
+            navigate("/");
+          }}
+        >
+          Sign Out
+        </Button>
       </Group>
       <Button
         leftIcon={<img src={add} width={"20px"} />}
@@ -59,12 +73,9 @@ const Admin = () => {
             return (
               <Stack key={index} spacing={"sm"} align="center" mb="md">
                 <ModalCard key={index} data={obj} />
-                <img
-                  src={delet}
-                  width={"30px"}
-                  onClick={() => handleDelete(obj?.id)}
-                  style={{ cursor: "pointer" }}
-                />
+                <ActionIcon onClick={() => handleDelete(obj?.id)}>
+                  <img src={delet} width={"30px"} />
+                </ActionIcon>
               </Stack>
             );
           })

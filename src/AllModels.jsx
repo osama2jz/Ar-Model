@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import wa from "./assets/wa.svg";
 import ModalCard from "./components/ModalCard";
 import axios from "axios";
-import { Button, Group, Loader, Stack } from "@mantine/core";
+import { Button, Group, Image, Loader, Stack } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import logo from "../public/logo.jpg"
 const AllModels = () => {
   const navigate = useNavigate();
   const [allData, setAllData] = useState([]);
@@ -23,7 +24,8 @@ const AllModels = () => {
 
   return (
     <div>
-      <Group position="right" mb="md">
+      <Group position="apart" mb="md">
+        <Image src={logo} width={80}/>
         <Button onClick={() => navigate("/signin")}>Sign In</Button>
       </Group>
       <h1>View All Models</h1>
